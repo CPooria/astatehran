@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[نام شما] | متخصص لینوکس</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --prompt-color: #58a6ff;
+            --command-color: #79c0ff;
+            --output-color: #a5d6ff;
+            --link-color: #388bfd;
+            --header-color: #8b949e;
+            --cursor-color: #58a6ff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--header-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            background-color: #161b22;
+        }
+
+        .prompt {
+            color: var(--prompt-color);
+        }
+
+        .command {
+            color: var(--command-color);
+            font-weight: bold;
+        }
+        
+        .output {
+            color: var(--output-color);
+            white-space: pre-wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            color: var(--header-color);
+            border-bottom: 1px solid var(--header-color);
+            padding-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+
+        ul li::before {
+            content: "- ";
+            color: var(--prompt-color);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .cursor {
+            display: inline-block;
+            background-color: var(--cursor-color);
+            width: 10px;
+            height: 1.5em;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent; }
+            50% { background-color: var(--cursor-color); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <span class="prompt">[user@hostname ~]$</span> <span class="command">whoami</span>
+            <div class="output">
+                <h1>[نام کامل شما]</h1>
+                <p>[عنوان شغلی شما، مثلا: مدیر سیستم لینوکس و متخصص DevOps]</p>
+                <p>[یک پاراگراف کوتاه در مورد خودتان، علاقه‌مندی‌ها و اهدافتان بنویسید.]</p>
+            </div>
+        </div>
+
+        <div>
+            <span class="prompt">[user@hostname ~]$</span> <span class="command">ls -l /skills</span>
+            <div class="output">
+                <h2>مهارت‌های کلیدی</h2>
+                <ul>
+                    <li><strong>سیستم‌عامل‌ها:</strong> Debian, CentOS, Fedora, Ubuntu Server</li>
+                    <li><strong>اسکریپت‌نویسی:</strong> Bash, Python</li>
+                    <li><strong>کانتینرسازی و مجازی‌سازی:</strong> Docker, KVM, Proxmox</li>
+                    <li><strong>وب سرورها:</strong> Nginx, Apache</li>
+                    <li><strong>ابزارهای DevOps:</strong> Git, Ansible, Jenkins</li>
+                    <li><strong>شبکه:</strong> TCP/IP, Firewall (iptables/ufw), DNS</li>
+                    </ul>
+            </div>
+        </div>
+
+        <div>
+            <span class="prompt">[user@hostname ~]$</span> <span class="command">cat /var/log/experience.log</span>
+            <div class="output">
+                <h2>سوابق شغلی</h2>
+                <h3>[آخرین عنوان شغلی] - [نام شرکت]</h3>
+                <p><em>[تاریخ شروع] - [تاریخ پایان یا "اکنون"]</em></p>
+                <ul>
+                    <li>[یکی از دستاوردهای مهم خود در این شغل را بنویسید.]</li>
+                    <li>[یک وظیفه کلیدی دیگر که به عهده داشتید.]</li>
+                    <li>[و مسئولیت مهم بعدی...]</li>
+                </ul>
+                </div>
+        </div>
+
+        <div>
+            <span class="prompt">[user@hostname ~]$</span> <span class="command">git log --oneline</span>
+            <div class="output">
+                <h2>پروژه‌های منتخب</h2>
+                <ul>
+                    <li><a href="[لینک پروژه در گیت‌هاب]" target="_blank">[نام پروژه ۱]</a> - [توضیح کوتاه در مورد پروژه و تکنولوژی‌های استفاده شده]</li>
+                    <li><a href="[لینک پروژه در گیت‌هاب]" target="_blank">[نام پروژه ۲]</a> - [توضیح کوتاه]</li>
+                    </ul>
+            </div>
+        </div>
+
+        <div>
+            <span class="prompt">[user@hostname ~]$</span> <span class="command">./contact.sh</span>
+            <div class="output">
+                <h2>راه‌های ارتباطی</h2>
+                <ul>
+                    <li>ایمیل: <a href="mailto:[ایمیل شما]">[ایمیل شما]</a></li>
+                    <li>لینکدین: <a href="[آدرس پروفایل لینکدین]" target="_blank">linkedin.com/in/yourprofile</a></li>
+                    <li>گیت‌هاب: <a href="[آدرس پروفایل گیت‌هاب]" target="_blank">github.com/yourusername</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <span class="prompt">[user@hostname ~]$</span> <span class="cursor"></span>
+        </div>
+    </div>
+
+</body>
+</html>
