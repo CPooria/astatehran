@@ -35,6 +35,7 @@ body {
     color: var(--prompt-color);
     font-weight: bold;
     margin-left: 0.5rem;
+    direction: ltr;
 }
 
 .command {
