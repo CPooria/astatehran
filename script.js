@@ -1,96 +1,37 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[نام شما] | متخصص لینوکس</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.terminal-section');
+    const cursorLine = document.querySelector('.cursor-line');
+    
+    // تابعی برای ایجاد تاخیر
+    const delay = ms => new Promise(res => setTimeout(res, ms));
 
-    <div class="container">
-        <div class="terminal-section">
-            <div class="command-line">
-                <span class="prompt">[user@hostname ~]$</span>
-                <span class="command" data-command="whoami"></span>
-            </div>
-            <div class="output">
-                <h1>[نام کامل شما]</h1>
-                <p>[عنوان شغلی شما، مثلا: مدیر سیستم لینوکس و متخصص DevOps]</p>
-                <p>[یک پاراگراف کوتاه در مورد خودتان، علاقه‌مندی‌ها و اهدافتان بنویسید.]</p>
-            </div>
-        </div>
+    // تابع اصلی برای تایپ کردن یک دستور
+    const typeCommand = async (element) => {
+        const commandText = element.getAttribute('data-command');
+        element.textContent = ''; // خالی کردن محتوای اولیه
+        
+        for (let i = 0; i < commandText.length; i++) {
+            element.textContent += commandText.charAt(i);
+            await delay(Math.random() * 100 + 50); // تاخیر تصادفی برای طبیعی‌تر شدن
+        }
+    };
 
-        <div class="terminal-section">
-            <div class="command-line">
-                <span class="prompt">[user@hostname ~]$</span>
-                <span class="command" data-command="ls -l /skills"></span>
-            </div>
-            <div class="output">
-                <h2>مهارت‌های کلیدی</h2>
-                <ul>
-                    <li><strong>سیستم‌عامل‌ها:</strong> Debian, CentOS, Fedora, Ubuntu Server</li>
-                    <li><strong>اسکریپت‌نویسی:</strong> Bash, Python</li>
-                    <li><strong>کانتینرسازی و مجازی‌سازی:</strong> Docker, KVM, Proxmox</li>
-                    <li><strong>وب سرورها:</strong> Nginx, Apache</li>
-                    <li><strong>ابزارهای DevOps:</strong> Git, Ansible, Jenkins</li>
-                </ul>
-            </div>
-        </div>
+    // تابع برای اجرای انیمیشن‌ها به ترتیب
+    const runAnimations = async () => {
+        // یکی‌یکی روی هر بخش حرکت می‌کنیم
+        for (const section of sections) {
+            section.style.opacity = '1'; // بخش را نمایش بده
+            const commandElement = section.querySelector('.command');
+            
+            await typeCommand(commandElement); // منتظر بمان تا تایپ دستور تمام شود
+            
+            await delay(500); // یک مکث کوتاه بعد از هر دستور
+        }
+        
+        // در انتها، خط فرمان نهایی را با کرسر نمایش بده
+        cursorLine.style.opacity = '1';
+    };
 
-        <div class="terminal-section">
-            <div class="command-line">
-                <span class="prompt">[user@hostname ~]$</span>
-                <span class="command" data-command="cat /var/log/experience.log"></span>
-            </div>
-            <div class="output">
-                <h2>سوابق شغلی</h2>
-                <h3>[آخرین عنوان شغلی] - [نام شرکت]</h3>
-                <p><em>[تاریخ شروع] - [تاریخ پایان یا "اکنون"]</em></p>
-                <ul>
-                    <li>[یکی از دستاوردهای مهم خود در این شغل را بنویسید.]</li>
-                    <li>[یک وظیفه کلیدی دیگر که به عهده داشتید.]</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="terminal-section">
-            <div class="command-line">
-                <span class="prompt">[user@hostname ~]$</span>
-                <span class="command" data-command="git log --oneline"></span>
-            </div>
-            <div class="output">
-                <h2>پروژه‌های منتخب</h2>
-                <ul>
-                    <li><a href="[لینک پروژه در گیت‌هاب]" target="_blank">[نام پروژه ۱]</a> - [توضیح کوتاه]</li>
-                    <li><a href="[لینک پروژه در گیت‌هاب]" target="_blank">[نام پروژه ۲]</a> - [توضیح کوتاه]</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="terminal-section">
-            <div class="command-line">
-                <span class="prompt">[user@hostname ~]$</span>
-                <span class="command" data-command="./contact.sh"></span>
-            </div>
-            <div class="output">
-                <h2>راه‌های ارتباطی</h2>
-                <ul>
-                    <li>ایمیل: <a href="mailto:[ایمیل شما]">[ایمیل شما]</a></li>
-                    <li>لینکدین: <a href="[آدرس پروفایل لینکدین]" target="_blank">linkedin.com/in/yourprofile</a></li>
-                    <li>گیت‌هاب: <a href="[آدرس پروفایل گیت‌هاب]" target="_blank">github.com/yourusername</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="cursor-line">
-            <div class="command-line">
-                <span class="prompt">[user@hostname ~]$</span>
-                <span class="cursor"></span>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    // اجرای انیمیشن‌ها پس از بارگذاری کامل صفحه
+    runAnimations();
+});
